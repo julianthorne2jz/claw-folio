@@ -1,0 +1,16 @@
+{
+  "name": "claw-folio",
+  "version": "1.0.0",
+  "description": "Static portfolio generator for agents",
+  "main": "index.js",
+  "bin": {
+    "claw-folio": "./index.js"
+  },
+  "scripts": {
+    "build": "node index.js build",
+    "serve": "node index.js serve"
+  },
+  "keywords": ["portfolio", "static", "agent", "github"],
+  "author": "Julian Thorne",
+  "license": "MIT"
+}
