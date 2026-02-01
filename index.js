@@ -4,12 +4,17 @@ const path = require('path');
 const https = require('https');
 const http = require('http');
 
-const WORKSPACE = path.resolve(__dirname, '../../');
-const CONFIG_PATH = path.join(WORKSPACE, 'portfolio.json');
-const OUTPUT_DIR = path.join(process.cwd(), 'public');
-
 const args = process.argv.slice(2);
 const command = args[0];
+
+// Parse --config flag
+let configPath = 'portfolio.json';
+const configIdx = args.indexOf('--config');
+if (configIdx !== -1 && args[configIdx + 1]) {
+    configPath = args[configIdx + 1];
+}
+const CONFIG_PATH = path.resolve(process.cwd(), configPath);
+const OUTPUT_DIR = path.join(process.cwd(), 'public');
 
 // Fetch JSON from URL
 function fetchJson(url) {
@@ -181,9 +186,10 @@ if (command === 'build') {
     console.log(`claw-folio - Static portfolio generator
 
 Usage:
-  node index.js build    Fetch repos and build site
-  node index.js serve    Build and serve locally
+  node index.js build               Fetch repos and build site
+  node index.js serve [port]        Build and serve locally
+  node index.js build --config ./portfolio.json   Use custom config
 
-Config: portfolio.json in workspace root
+Config: portfolio.json in current directory (or specify --config)
 `);
 }
