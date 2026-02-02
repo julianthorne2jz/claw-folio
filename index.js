@@ -101,7 +101,20 @@ function fetchJson(url) {
 // Fetch GitHub repos for a user
 async function fetchRepos(username) {
     const url = `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`;
-    return fetchJson(url);
+    const response = await fetchJson(url);
+    
+    // GitHub API returns { message: "Not Found" } for invalid users
+    if (!Array.isArray(response)) {
+        if (response.message === 'Not Found') {
+            throw new Error(`GitHub user '${username}' not found. Check your portfolio.json.`);
+        }
+        if (response.message) {
+            throw new Error(`GitHub API error: ${response.message}`);
+        }
+        throw new Error(`Unexpected response from GitHub API for user '${username}'.`);
+    }
+    
+    return response;
 }
 
 // Get theme from config or flag
@@ -209,6 +222,14 @@ async function build() {
     
     if (!config.github) {
         console.error('Error: github username required in portfolio.json');
+        process.exit(1);
+    }
+
+    // Catch placeholder values
+    const placeholders = ['username', 'your-username', 'yourusername', 'user', 'example'];
+    if (placeholders.includes(config.github.toLowerCase())) {
+        console.error(`Error: '${config.github}' looks like a placeholder.`);
+        console.error('Edit portfolio.json and set "github" to your actual GitHub username.');
         process.exit(1);
     }
 
