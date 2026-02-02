@@ -10,7 +10,15 @@
     "build": "node index.js build",
     "serve": "node index.js serve"
   },
-  "keywords": ["portfolio", "static", "agent", "github"],
+  "keywords": [
+    "portfolio",
+    "static",
+    "agent",
+    "github"
+  ],
   "author": "Julian Thorne",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
