@@ -1,0 +1,12 @@
+{
+  "name": "My Portfolio",
+  "tagline": "Building things.",
+  "github": "username",
+  "twitter": "",
+  "website": "",
+  "theme": "dark",
+  "include": [],
+  "exclude": [
+    "username.github.io"
+  ]
+}
