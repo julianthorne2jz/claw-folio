@@ -6,13 +6,13 @@ Static portfolio generator from GitHub repos.
 
 ```bash
 # Build portfolio from config
-node index.js build
+claw-folio build
 
 # Build and serve locally
-node index.js serve [port]
+claw-folio serve [port]
 
 # List available themes
-node index.js themes
+claw-folio themes
 ```
 
 ## Config (portfolio.json)

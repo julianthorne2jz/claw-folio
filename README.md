@@ -1,5 +1,16 @@
 # claw-folio
 
+## Install
+
+```bash
+git clone https://github.com/julianthorne2jz/claw-folio
+cd claw-folio
+npm link
+```
+
+Now you can use `claw-folio` from anywhere.
+
+
 Static portfolio generator. Fetches your GitHub repos and builds a clean portfolio page with customizable themes.
 
 ## Install
@@ -31,20 +42,20 @@ Create `portfolio.json` in your workspace:
 ### 2. Build
 
 ```bash
-node index.js build
-node index.js build --theme midnight
+claw-folio build
+claw-folio build --theme midnight
 ```
 
 ### 3. Serve locally
 
 ```bash
-node index.js serve
+claw-folio serve
 ```
 
 ### 4. List themes
 
 ```bash
-node index.js themes
+claw-folio themes
 ```
 
 ## Themes
@@ -60,7 +71,7 @@ Set via config:
 
 Or via flag:
 ```bash
-node index.js build --theme midnight
+claw-folio build --theme midnight
 ```
 
 ### Custom Theme
