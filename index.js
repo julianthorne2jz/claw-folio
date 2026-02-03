@@ -158,22 +158,26 @@ function template(config, projects, theme) {
     <title>${config.name || 'Portfolio'}</title>
     <style>
         :root{--bg:${theme.bg};--bg2:${theme.bg2};--border:${theme.border};--text:${theme.text};--muted:${theme.muted};--accent:${theme.accent};--lang-bg:${theme.langBg};--lang-text:${theme.langText}}
-        *{box-sizing:border-box;margin:0;padding:0}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);max-width:900px;margin:0 auto;padding:2rem 1.5rem;line-height:1.6}
-        a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-        header{text-align:center;margin-bottom:3rem}
-        header h1{font-size:2rem;margin-bottom:.5rem}
-        header p{color:var(--muted)}
-        .links{margin-top:1rem}
-        .links a{margin:0 .75rem;font-size:.9rem}
-        .projects{display:grid;gap:1.5rem}
-        .project{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem}
-        .project h3{margin-bottom:.5rem}
-        .project p{color:var(--muted);font-size:.9rem;margin-bottom:.75rem}
-        .meta{font-size:.8rem;color:var(--muted)}
-        .meta span{margin-right:1rem}
-        .lang{background:var(--lang-bg);color:var(--lang-text);padding:.1rem .4rem;border-radius:3px}
-        footer{margin-top:3rem;text-align:center;color:var(--muted);font-size:.8rem}
+        *{box-sizing:border-box;margin:0;padding:0;transition:all 0.2s ease}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);max-width:1000px;margin:0 auto;padding:4rem 2rem;line-height:1.6}
+        a{color:var(--text);text-decoration:none;border-bottom:1px solid transparent}a:hover{color:var(--accent);border-color:var(--accent)}
+        header{text-align:center;margin-bottom:5rem;animation:fadein 0.8s ease}
+        header h1{font-size:3.5rem;font-weight:800;letter-spacing:-1px;margin-bottom:1rem;background:linear-gradient(135deg, var(--text) 0%, var(--muted) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        header p{color:var(--muted);font-size:1.2rem;max-width:600px;margin:0 auto 2rem}
+        .links{display:flex;justify-content:center;gap:1.5rem}
+        .links a{font-weight:600;font-size:0.95rem;color:var(--muted);padding:0.5rem 1rem;border-radius:50px;background:var(--bg2);border:1px solid var(--border)}
+        .links a:hover{background:var(--accent);color:white;border-color:var(--accent);transform:translateY(-2px)}
+        .projects{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:2rem}
+        .project{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
+        .project:hover{transform:translateY(-5px);box-shadow:0 20px 40px -15px rgba(0,0,0,0.3);border-color:var(--accent)}
+        .project h3{margin-bottom:0.75rem;font-size:1.25rem}
+        .project p{color:var(--muted);font-size:0.95rem;margin-bottom:1.5rem;flex-grow:1}
+        .meta{display:flex;align-items:center;font-size:0.85rem;color:var(--muted);margin-top:auto}
+        .meta span{margin-right:1.2rem;display:flex;align-items:center;gap:0.3rem}
+        .lang{background:var(--lang-bg);color:var(--lang-text);padding:0.2rem 0.6rem;border-radius:4px;font-weight:600;font-size:0.75rem}
+        footer{margin-top:6rem;text-align:center;color:var(--muted);font-size:0.9rem;opacity:0.6}
+        @keyframes fadein{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @media(max-width:600px){header h1{font-size:2.5rem}.projects{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
